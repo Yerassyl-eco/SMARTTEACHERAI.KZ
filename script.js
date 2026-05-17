@@ -3,7 +3,7 @@
    ========================================== */
 
 const API_URL = "https://api.anthropic.com/v1/messages";
-const API_KEY = "PASTE_API_KEY_HERE"; // ← вставь свой ключ
+const API_KEY = "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"; 
 
 // ===== STATE =====
 let state = {
