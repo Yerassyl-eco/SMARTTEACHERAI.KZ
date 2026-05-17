@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Smart Teacher — Умный репетитор для ЕНТ</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="logo">
+      <span class="logo-icon">⚡</span>
+      <span class="logo-text">SmartTeacher<span class="logo-ai">.ai</span></span>
+    </div>
+    <div class="nav-links">
+      <button class="nav-link" onclick="showScreen('learning')">Учиться</button>
+      <button class="nav-link" onclick="showScreen('ent')">ЕНТ</button>
+      <button class="nav-link" onclick="showScreen('profile')">Профиль</button>
+      <button class="btn-upgrade" onclick="showUpgrade()">⚡ Upgrade</button>
+    </div>
+    <div class="nav-requests">
+      <span id="nav-requests-count">5</span> запросов
+    </div>
+  </div>
+</nav>
+
+<!-- ===== SCREENS ===== -->
+<div id="app">
+
+<!-- ===== LANDING ===== -->
+<section id="screen-landing" class="screen active">
+  <div class="hero">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="grid-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="badge">🇰🇿 Создан для казахстанских учеников</div>
+      <h1 class="hero-title">
+        Учись умнее.<br>
+        <span class="gradient-text">Сдай ЕНТ на 140+</span>
+      </h1>
+      <p class="hero-sub">AI-репетитор, который адаптируется под тебя, объясняет до полного понимания и превращает учёбу в игру.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="showScreen('learning')">
+          <span>Начать обучение</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <button class="btn-ghost" onclick="showScreen('ent')">Режим ЕНТ</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">12K+</span><span class="stat-label">Учеников</span></div>
+        <div class="stat-sep"></div>
+        <div class="stat"><span class="stat-num">98%</span><span class="stat-label">Сдали ЕНТ</span></div>
+        <div class="stat-sep"></div>
+        <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Предметов</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="phone-mock">
+        <div class="phone-screen">
+          <div class="chat-bubble bot">
+            <div class="avatar">🤖</div>
+            <div class="bubble">Привет! Какую тему учим сегодня?</div>
+          </div>
+          <div class="chat-bubble user">
+            <div class="bubble">Интегралы, не понимаю</div>
+          </div>
+          <div class="chat-bubble bot">
+            <div class="avatar">🤖</div>
+            <div class="bubble">Окей! Начнём с простого примера 📐</div>
+          </div>
+          <div class="xp-popup">+10 XP 🔥</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <div class="features-section">
+    <div class="section-label">Почему мы?</div>
+    <h2 class="section-title">Репетитор, который<br><em>реально</em> работает</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h3>Адаптивное обучение</h3>
+        <p>AI анализирует твои ошибки и подстраивает уровень сложности в реальном времени</p>
+      </div>
+      <div class="feature-card feature-card--accent">
+        <div class="feature-icon">⚡</div>
+        <h3>Объяснения до понимания</h3>
+        <p>Не понял? Попроси объяснить проще. AI найдёт аналогию, которая зайдёт именно тебе</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎮</div>
+        <h3>Геймификация</h3>
+        <p>Зарабатывай XP, открывай достижения, прокачивай своего персонажа</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🇰🇿</div>
+        <h3>Режим ЕНТ</h3>
+        <p>Тесты в точном формате ЕНТ с таймером и разбором ошибок</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Аналитика прогресса</h3>
+        <p>Видишь слабые темы, динамику роста и прогноз на экзамен</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📸</div>
+        <h3>Фото задачи</h3>
+        <p>Сфотографируй задание из учебника — AI объяснит и решит</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pricing -->
+  <div class="pricing-section">
+    <div class="section-label">Планы</div>
+    <h2 class="section-title">Начни бесплатно</h2>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="plan-name">Бесплатно</div>
+        <div class="plan-price">0 ₸</div>
+        <ul class="plan-features">
+          <li>✓ 5 запросов в день</li>
+          <li>✓ Все предметы</li>
+          <li>✓ Базовые тесты</li>
+          <li class="dimmed">✗ Безлимитные запросы</li>
+          <li class="dimmed">✗ Быстрый AI</li>
+          <li class="dimmed">✗ Режим жёсткий учитель</li>
+        </ul>
+        <button class="btn-plan btn-plan--free" onclick="showScreen('learning')">Начать</button>
+      </div>
+      <div class="pricing-card pricing-card--premium">
+        <div class="plan-badge">🔥 Популярный</div>
+        <div class="plan-name">Premium</div>
+        <div class="plan-price">2 990 ₸<span>/мес</span></div>
+        <ul class="plan-features">
+          <li>✓ Безлимитные запросы</li>
+          <li>✓ Все предметы</li>
+          <li>✓ Все тесты ЕНТ</li>
+          <li>✓ Быстрый AI GPT-4</li>
+          <li>✓ Режим «Жёсткий учитель»</li>
+          <li>✓ Аналитика прогресса</li>
+        </ul>
+        <button class="btn-plan btn-plan--premium" onclick="showUpgrade()">Купить Premium</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LEARNING ===== -->
+<section id="screen-learning" class="screen">
+  <div class="learning-layout">
+    <div class="learning-sidebar">
+      <div class="sidebar-header">
+        <h2>Учебный модуль</h2>
+        <div class="user-mini-stats">
+          <div class="mini-xp">
+            <span id="sidebar-xp">0</span> XP
+          </div>
+          <div class="mini-level" id="sidebar-level">Новичок</div>
+        </div>
+      </div>
+
+      <div class="subject-select">
+        <label class="field-label">Предмет</label>
+        <select id="subject-select" class="select-field">
+          <option value="math">📐 Математика</option>
+          <option value="physics">⚗️ Физика</option>
+          <option value="chemistry">🧪 Химия</option>
+          <option value="biology">🌿 Биология</option>
+          <option value="history">📜 История Казахстана</option>
+          <option value="geography">🗺️ География</option>
+          <option value="english">🇬🇧 Английский</option>
+          <option value="literature">📖 Русская литература</option>
+        </select>
+      </div>
+
+      <div class="level-select">
+        <label class="field-label">Уровень</label>
+        <div class="level-buttons">
+          <button class="level-btn active" data-level="easy" onclick="selectLevel('easy', this)">Базовый</button>
+          <button class="level-btn" data-level="medium" onclick="selectLevel('medium', this)">Средний</button>
+          <button class="level-btn" data-level="hard" onclick="selectLevel('hard', this)">Сложный</button>
+        </div>
+      </div>
+
+      <div class="topic-input-wrap">
+        <label class="field-label">Тема</label>
+        <input type="text" id="topic-input" class="text-field" placeholder="Например: производная функции..." />
+      </div>
+
+      <!-- Photo upload -->
+      <div class="photo-upload-block">
+        <label class="field-label">📸 Фото задачи</label>
+        <div class="photo-drop-zone" onclick="document.getElementById('photo-input').click()" id="photo-drop">
+          <input type="file" id="photo-input" accept="image/*" style="display:none" onchange="handlePhotoUpload(this)">
+          <div class="photo-drop-inner">
+            <span class="photo-icon">📷</span>
+            <span>Загрузить фото</span>
+          </div>
+        </div>
+        <div id="photo-preview" class="photo-preview hidden"></div>
+      </div>
+
+      <button class="btn-primary btn-full" onclick="explainTopic()">
+        <span>Объяснить</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+
+      <div class="requests-info">
+        <div class="req-bar-wrap">
+          <div class="req-bar" id="req-bar"></div>
+        </div>
+        <span id="req-text">5/5 запросов осталось</span>
+        <button class="link-upgrade" onclick="showUpgrade()">Upgrade →</button>
+      </div>
+
+      <!-- Weak topics -->
+      <div class="weak-topics" id="weak-topics-block">
+        <div class="field-label">📌 Слабые темы</div>
+        <div id="weak-topics-list" class="weak-list"></div>
+      </div>
+    </div>
+
+    <div class="learning-main">
+      <!-- Welcome state -->
+      <div class="welcome-state" id="welcome-state">
+        <div class="welcome-icon">🎓</div>
+        <h3>Выбери тему и начни учиться</h3>
+        <p>Введи тему слева, и я объясню её понятно и с примерами</p>
+        <div class="suggested-topics">
+          <div class="field-label">Популярные темы:</div>
+          <div class="topic-chips">
+            <button class="topic-chip" onclick="quickTopic('Производная функции')">Производная функции</button>
+            <button class="topic-chip" onclick="quickTopic('Закон Ньютона')">Закон Ньютона</button>
+            <button class="topic-chip" onclick="quickTopic('Клетка и её строение')">Строение клетки</button>
+            <button class="topic-chip" onclick="quickTopic('Великий шёлковый путь')">Великий шёлковый путь</button>
+            <button class="topic-chip" onclick="quickTopic('Уравнение химической реакции')">Химические реакции</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat container -->
+      <div class="chat-container hidden" id="chat-container">
+        <div class="chat-messages" id="chat-messages"></div>
+
+        <div class="chat-actions">
+          <button class="action-btn" onclick="simplifyExplanation()">🔄 Объясни проще</button>
+          <button class="action-btn" onclick="giveTask()">✏️ Дай задание</button>
+          <button class="action-btn" onclick="startMiniTest()">🧪 Мини тест</button>
+          <button class="action-btn" onclick="speakLast()">🔊 Озвучить</button>
+          <button class="action-btn" id="hardmode-btn" onclick="hardTeacherMode()" style="display:none">😤 Жёсткий учитель</button>
+        </div>
+
+        <!-- Mini test area -->
+        <div class="mini-test-area hidden" id="mini-test-area">
+          <div class="test-question" id="test-question"></div>
+          <div class="test-options" id="test-options"></div>
+          <div class="test-result hidden" id="test-result"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROFILE ===== -->
+<section id="screen-profile" class="screen">
+  <div class="profile-layout">
+    <div class="profile-header-card">
+      <div class="profile-avatar">
+        <div class="avatar-ring">
+          <div class="avatar-inner" id="profile-avatar-emoji">🧑‍🎓</div>
+        </div>
+        <div class="avatar-level-badge" id="profile-level-badge">Lv.1</div>
+      </div>
+      <div class="profile-info">
+        <h2 class="profile-name" id="profile-name">Ученик</h2>
+        <div class="profile-rank" id="profile-rank">Новичок</div>
+        <div class="xp-bar-wrap">
+          <div class="xp-bar" id="profile-xp-bar"></div>
+        </div>
+        <div class="xp-label"><span id="profile-xp">0</span> XP / <span id="profile-xp-next">100</span> XP</div>
+      </div>
+      <div class="profile-streak">
+        <div class="streak-fire">🔥</div>
+        <div class="streak-count" id="streak-count">0</div>
+        <div class="streak-label">дней подряд</div>
+      </div>
+    </div>
+
+    <div class="profile-grid">
+      <div class="profile-card">
+        <h3>📊 Прогресс</h3>
+        <div class="progress-list" id="progress-list">
+          <div class="empty-state-small">Начни учиться, чтобы видеть прогресс</div>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <h3>🏆 Достижения</h3>
+        <div class="achievements-grid" id="achievements-grid">
+          <div class="achievement locked">
+            <div class="ach-icon">🎯</div>
+            <div class="ach-name">Первая тема</div>
+            <div class="ach-status">Заблокировано</div>
+          </div>
+          <div class="achievement locked">
+            <div class="ach-icon">🔥</div>
+            <div class="ach-name">3 подряд</div>
+            <div class="ach-status">Заблокировано</div>
+          </div>
+          <div class="achievement locked">
+            <div class="ach-icon">⚡</div>
+            <div class="ach-name">Спидран</div>
+            <div class="ach-status">Заблокировано</div>
+          </div>
+          <div class="achievement locked">
+            <div class="ach-icon">🧠</div>
+            <div class="ach-name">Гений</div>
+            <div class="ach-status">Заблокировано</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-card profile-card--full">
+        <h3>📌 Слабые темы</h3>
+        <div id="profile-weak-topics">
+          <div class="empty-state-small">Пока ошибок нет — отличный старт!</div>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <h3>📈 Статистика</h3>
+        <div class="stats-list">
+          <div class="stat-row">
+            <span>Тем изучено</span>
+            <span id="stat-topics">0</span>
+          </div>
+          <div class="stat-row">
+            <span>Тестов пройдено</span>
+            <span id="stat-tests">0</span>
+          </div>
+          <div class="stat-row">
+            <span>Правильных ответов</span>
+            <span id="stat-correct">0%</span>
+          </div>
+          <div class="stat-row">
+            <span>Режим ЕНТ</span>
+            <span id="stat-ent">0 попыток</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ENT MODE ===== -->
+<section id="screen-ent" class="screen">
+  <div class="ent-layout">
+
+    <div id="ent-setup" class="ent-setup">
+      <div class="ent-header">
+        <div class="ent-flag">🇰🇿</div>
+        <h2>Режим ЕНТ</h2>
+        <p>Пробный экзамен в реальном формате</p>
+      </div>
+
+      <div class="ent-subject-grid">
+        <div class="ent-subject-card" data-subject="math" onclick="selectEntSubject('math', this)">
+          <span class="es-icon">📐</span>
+          <span>Математика</span>
+        </div>
+        <div class="ent-subject-card" data-subject="physics" onclick="selectEntSubject('physics', this)">
+          <span class="es-icon">⚗️</span>
+          <span>Физика</span>
+        </div>
+        <div class="ent-subject-card" data-subject="chemistry" onclick="selectEntSubject('chemistry', this)">
+          <span class="es-icon">🧪</span>
+          <span>Химия</span>
+        </div>
+        <div class="ent-subject-card" data-subject="history" onclick="selectEntSubject('history', this)">
+          <span class="es-icon">📜</span>
+          <span>История КЗ</span>
+        </div>
+        <div class="ent-subject-card" data-subject="biology" onclick="selectEntSubject('biology', this)">
+          <span class="es-icon">🌿</span>
+          <span>Биология</span>
+        </div>
+        <div class="ent-subject-card" data-subject="geography" onclick="selectEntSubject('geography', this)">
+          <span class="es-icon">🗺️</span>
+          <span>География</span>
+        </div>
+      </div>
+
+      <div class="ent-config">
+        <div class="config-row">
+          <label>Количество вопросов</label>
+          <select id="ent-count" class="select-field">
+            <option value="10">10 вопросов</option>
+            <option value="20" selected>20 вопросов</option>
+            <option value="40">40 вопросов (полный ЕНТ)</option>
+          </select>
+        </div>
+        <div class="config-row">
+          <label>Время (минут)</label>
+          <select id="ent-time" class="select-field">
+            <option value="10">10 минут</option>
+            <option value="20" selected>20 минут</option>
+            <option value="40">40 минут</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="btn-primary btn-full ent-start-btn" onclick="startENT()">
+        Начать тест
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <!-- ENT Active Test -->
+    <div id="ent-active" class="ent-active hidden">
+      <div class="ent-topbar">
+        <div class="ent-progress-wrap">
+          <span id="ent-q-counter">1/20</span>
+          <div class="ent-progress-bar">
+            <div class="ent-progress-fill" id="ent-progress-fill"></div>
+          </div>
+        </div>
+        <div class="ent-timer" id="ent-timer">20:00</div>
+        <button class="btn-ghost btn-sm" onclick="stopENT()">Завершить</button>
+      </div>
+
+      <div class="ent-question-card">
+        <div class="ent-q-num" id="ent-q-num">Вопрос 1</div>
+        <div class="ent-q-text" id="ent-q-text"></div>
+        <div class="ent-options" id="ent-options"></div>
+      </div>
+
+      <div class="ent-nav">
+        <button class="btn-ghost" id="ent-prev-btn" onclick="entPrev()" disabled>← Назад</button>
+        <div class="ent-dots" id="ent-dots"></div>
+        <button class="btn-primary" id="ent-next-btn" onclick="entNext()">Далее →</button>
+      </div>
+    </div>
+
+    <!-- ENT Result -->
+    <div id="ent-result" class="ent-result hidden">
+      <div class="result-icon" id="result-icon">🏆</div>
+      <h2 id="result-title">Отличный результат!</h2>
+      <div class="result-score" id="result-score">18/20</div>
+      <div class="result-percent" id="result-percent">90%</div>
+      <div class="result-details" id="result-details"></div>
+      <div class="result-actions">
+        <button class="btn-primary" onclick="restartENT()">Пройти снова</button>
+        <button class="btn-ghost" onclick="showScreen('learning')">Учиться дальше</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /app -->
+
+<!-- ===== UPGRADE MODAL ===== -->
+<div class="modal-overlay hidden" id="upgrade-modal" onclick="closeUpgrade(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeUpgrade()">✕</button>
+    <div class="modal-badge">⚡ PREMIUM</div>
+    <h2 class="modal-title">Открой полный доступ</h2>
+    <p class="modal-sub">Убери лимиты и учись без ограничений</p>
+    <div class="modal-features">
+      <div class="modal-feat">✓ Безлимитные запросы AI</div>
+      <div class="modal-feat">✓ Быстрый ответ (приоритет)</div>
+      <div class="modal-feat">✓ Режим «Жёсткий учитель»</div>
+      <div class="modal-feat">✓ Подробная аналитика</div>
+      <div class="modal-feat">✓ Все тесты ЕНТ</div>
+    </div>
+    <button class="btn-primary btn-full modal-cta" onclick="activatePremium()">
+      Купить Premium — 2 990 ₸/мес
+    </button>
+    <div class="modal-fine">Отмена в любое время. Без скрытых платежей.</div>
+  </div>
+</div>
+
+<!-- ===== ACHIEVEMENT TOAST ===== -->
+<div class="achievement-toast hidden" id="achievement-toast">
+  <div class="toast-icon" id="toast-icon">🏆</div>
+  <div class="toast-content">
+    <div class="toast-title">Достижение!</div>
+    <div class="toast-desc" id="toast-desc">Первая тема</div>
+  </div>
+  <div class="toast-xp" id="toast-xp">+50 XP</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
